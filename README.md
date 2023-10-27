@@ -17,22 +17,24 @@ Implementation of NSA in Open AI Gym
 ```cd Neural-Simplex-Architecture```
 
 ### Install Dependencies
-```pip install -r requitements.txt```
+```pip install -r requirements.txt```
 
 
-## Algorithms Used
+## Algorithms Supported
 <ol>
-  <li>PPO ✅ </li>
+  <li>PPO (Proximal Policy Optimization) ✅ </li>
   <li>TRPO ✅ </li>
 </ol>
 
-## Links:
-Open AI Gym
-Stable Baselines3
+## Links
 
+#### Frameworks & Libraries
+[Open AI Gym](https://www.gymlibrary.dev/index.html) ,
+[Stable Baselines3](https://www.gymlibrary.dev/index.html)
 
-### Alogirthms
+#### Algorithms
+[PPO](https://openai.com/research/openai-baselines-ppo) ,
+[TRPO](https://spinningup.openai.com/en/latest/algorithms/trpo.html#trust-region-policy-optimization)
 
-### Others
-Reynold's Model
-Flocking
+#### Others
+[Reynold's Flocking Model](https://en.wikipedia.org/wiki/Boids)
