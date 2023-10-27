@@ -1,11 +1,10 @@
 # Neural Simplex Architecture
-Implementation of NSA in Open AI Gym 
+##Description: Implementation of [NSA](https://arxiv.org/abs/1908.00528) in Open AI Gym 
 
 
-<em> Built atop of work done in Flocking-RL at github.com/Hamza-101/Flocking-RL/ </em>
 
 
-**Paper**: https://arxiv.org/abs/1908.00528
+<em> Built atop of code done in [Flocking-RL](github.com/Hamza-101/Flocking-RL) </em>
 
 ## **Architecture**
 ![NSA](https://github.com/Hamza-101/Neural-Simplex-Architecture/assets/45544623/ea8e69af-98cd-4dd2-afa0-3f90575cd1cd) 
@@ -27,6 +26,7 @@ Implementation of NSA in Open AI Gym
 </ol>
 
 ## Links
+[Neural Simplex Architecture](https://arxiv.org/abs/1908.00528) 
 
 #### Frameworks & Libraries
 [Open AI Gym](https://www.gymlibrary.dev/index.html) ,
