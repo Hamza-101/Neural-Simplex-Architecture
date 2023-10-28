@@ -21,7 +21,7 @@ Implementation of [NSA](https://arxiv.org/abs/1908.00528) in Open AI Gym
 ```pip install -r requirements.txt```
 
 
-## Algorithms Supported
+## Supported Algorithms 
 <ol>
   <li>PPO (Proximal Policy Optimization) ✅ </li>
   <li>TRPO ✅ </li>
