@@ -5,10 +5,11 @@ Implementation of [NSA](https://arxiv.org/abs/1908.00528) in Open AI Gym
 
 
 
-<em> Built atop of code done in [Flocking-RL](github.com/Hamza-101/Flocking-RL) </em>
+**RL component**: [Flocking-RL](github.com/Hamza-101/Flocking-RL)
 
 ## **Architecture**
-![NSA](https://github.com/Hamza-101/Neural-Simplex-Architecture/assets/45544623/ea8e69af-98cd-4dd2-afa0-3f90575cd1cd) 
+![image](https://github.com/Hamza-101/Neural-Simplex-Architecture/assets/45544623/ea18228c-9800-4e26-a202-77b219eabdbf)
+
 
 ## Installation
 ### Clone Repository
