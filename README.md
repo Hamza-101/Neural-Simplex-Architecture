@@ -1,5 +1,6 @@
 # Neural Simplex Architecture
-##Description: Implementation of [NSA](https://arxiv.org/abs/1908.00528) in Open AI Gym 
+## Description
+Implementation of [NSA](https://arxiv.org/abs/1908.00528) in Open AI Gym 
 
 
 
