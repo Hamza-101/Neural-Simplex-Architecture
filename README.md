@@ -11,6 +11,7 @@ Implementation of [NSA](https://arxiv.org/abs/1908.00528) in Open AI Gym
 
 
 **Baseline Controller**: [Baseline Controller](github.com/Hamza-101/BaselineNSA)
+
 **RL component**: [Flocking-RL](github.com/Hamza-101/Flocking-RL)
 
 
