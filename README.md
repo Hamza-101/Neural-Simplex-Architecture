@@ -23,7 +23,7 @@ Implementation of [NSA](https://arxiv.org/abs/1908.00528) in Open AI Gym
 
 ## Supported Algorithms 
 <ol>
-  <li>PPO (Proximal Policy Optimization) ✅ </li>
+  <li>PPO ✅ </li>
   <li>TRPO ✅ </li>
 </ol>
 
