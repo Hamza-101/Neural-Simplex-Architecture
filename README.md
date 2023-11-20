@@ -5,10 +5,13 @@ Implementation of [NSA](https://arxiv.org/abs/1908.00528) in Open AI Gym
 
 
 
-**RL component**: [Flocking-RL](github.com/Hamza-101/Flocking-RL)
 
 ## **Architecture**
 ![image](https://github.com/Hamza-101/Neural-Simplex-Architecture/assets/45544623/ea18228c-9800-4e26-a202-77b219eabdbf)
+
+
+**Baseline Controller**: [Baseline Controller](github.com/Hamza-101/BaselineNSA)
+**RL component**: [Flocking-RL](github.com/Hamza-101/Flocking-RL)
 
 
 ## Installation
