@@ -1,6 +1,7 @@
 # Neural Simplex Architecture
 ## Description
-Implementation of [NSA](https://arxiv.org/abs/1908.00528) in Open AI Gym 
+Implementation of [Neural Simplex Architecture
+](https://arxiv.org/abs/1908.00528), by D.T. Phan, in Open AI Gym 
 
 
 
