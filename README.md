@@ -29,7 +29,10 @@ Implementation of [Neural Simplex Architecture
 ## Supported Algorithms 
 <ol>
   <li>PPO ✅ </li>
-  <li>TRPO  </li> 
+  <li>TRPO </li> 
+  <li>MMAPPO </li> 
+  <li>IPPO </li> 
+  <li>MADDPG ✅ </li>
 </ol>
 
 ## Links
