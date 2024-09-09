@@ -2,7 +2,7 @@ import json
 import numpy as np
 from gym import spaces
 from ray.rllib.env.multi_agent_env import MultiAgentEnv
-from Settings import *
+from Core.Settings import *
 
 class Agent:
     def __init__(self, position):

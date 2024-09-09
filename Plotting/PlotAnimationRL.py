@@ -1,7 +1,7 @@
 import os
 import json
 from tqdm import tqdm
-from Settings import *
+from Core.Settings import *
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
