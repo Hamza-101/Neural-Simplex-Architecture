@@ -34,12 +34,16 @@ class FlockingEnv(MultiAgentEnv):
         self.agents = [Agent(position) for position in self.read_agent_locations()]
 
         # Per agent action and observation space
+        # Define single-agent action and observation space
         self.action_space = spaces.Box(low=np.array([-5, -5], dtype=np.float32),
-                                       high=np.array([5, 5], dtype=np.float32),
-                                       dtype=np.float32)
+                                    high=np.array([5, 5], dtype=np.float32),
+                                    dtype=np.float32)
+
         self.observation_space = spaces.Box(low=np.array([-np.inf, -np.inf, -2.5, -2.5], dtype=np.float32),
                                             high=np.array([np.inf, np.inf, 2.5, 2.5], dtype=np.float32),
                                             dtype=np.float32)
+        
+        self.agents_ids = [f"agent_{i}" for i in range(len(self.agents))]
 
 
     # def step(self, action_dict):

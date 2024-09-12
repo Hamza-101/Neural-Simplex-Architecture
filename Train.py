@@ -1,81 +1,48 @@
 import ray
-from ray import tune
-from ray.rllib.algorithms.ppo import PPOConfig
-# from ray.rllib.algorithms.ppo import PPO
-from env import FlockingEnv
-from Settings import *
-from ray.rllib.algorithms.callbacks import DefaultCallbacks
+from ray.rllib.algorithms import ppo
+from ray.rllib.env import MultiAgentEnv
+from ray.tune.registry import register_env
+
+# Make sure your environment class is imported
+from env import FlockingEnv  # Replace with the actual module name
+
+# Register your custom environment
+def create_flocking_env(env_config):
+    return FlockingEnv()
+
+register_env("flocking_env", create_flocking_env)
 
 
-# Config and kwargs not being used 
+# Initialize Ray
+ray.init(ignore_reinit_error=True)
 
-class LossCallback(DefaultCallbacks):
-    def __init__(self, loss_threshold=2000):
-        super().__init__()
-        self.loss_threshold = loss_threshold
+# Configuration for PPO
+config = {
+    "env": "flocking_env",
+    "env_config": {},  # Custom environment configuration if needed
+    "num_workers": 4,  # Number of parallel workers
+    "num_envs_per_worker": 1,  # Number of environments per worker
+    "model": {
+        "fcnet_hiddens": [64, 64],  # Network architecture
+    },
+    "lr": 1e-4,  # Learning rate
+    "train_batch_size": 4000,  # Total batch size for each update
+    "rollout_fragment_length": 200,  # Length of each rollout fragment
+    "framework": "tf",  # or "torch", depending on which framework you're using
+}
 
-    def on_train_result(self, *, trainer, result, **kwargs):
-        # Assuming "policy_loss" or similar is in the result dict
-        # Adjust this key according to your setup
-        if 'policy_loss' in result['info']:
-            policy_loss = result['info']['policy_loss']
-            # Stopping if the average policy loss is below threshold
-            if policy_loss < self.loss_threshold:
-                print(f"Stopping training as loss ({policy_loss}) is below {self.loss_threshold}")
-                result['done'] = True  # This will signal to stop the training
+# Create the PPO trainer
+trainer = ppo.PPO(config=config, env="flocking_env")
 
-
-ray.init()
-
-# Register the custom environment
-env_name = "flocking_env"
-tune.register_env(env_name, lambda config: FlockingEnv())
-
-# Define policies
-policy_ids = [f"agent_{i}" for i in range(3)]  # Assuming 3 agents
-
-config = PPOConfig() \
-    .environment(env_name) \
-    .framework("torch") \
-    .multi_agent(
-        policies={
-            policy_id: (
-                None,
-                FlockingEnv().observation_space,
-                FlockingEnv().action_space,
-                {
-                    "model": {
-                        "vf_share_layers": True,  # Share layers between policy and critic
-                        "fcnet_hiddens": [512, 512, 512, 512, 512, 512, 512, 512],  # Eight layers of 512 neurons each
-                        "fcnet_activation": "tanh",  # Tanh activation function
-                    },
-                }
-            )
-            for policy_id in policy_ids
-        },
-        policy_mapping_fn=lambda agent_id, **kwargs: agent_id,
-    ) \
-    .rollouts(num_rollout_workers=2) \
-    .training(train_batch_size=2048, sgd_minibatch_size=64, num_sgd_iter=10)
-
-tune.run(
-    "PPO",
-    config=config.to_dict(),  # Convert the config to a dictionary
-    stop={"episode_reward_mean": 100},  # Adjust this based on your environment
-)
-
-# tune.run(
-#     PPO,
-#     config=config,  # No need to convert to dict
-#     stop={"episode_reward_mean": 100},  # Adjust this based on your environment
-# )
-
-# tune.run(
-#     PPO,
-#     config=config,
-#     stop={"training_iteration": 100},  # Optional stop condition if loss threshold isn't hit
-#     callbacks=[LossCallback(loss_threshold=2000)]
-# )
+# Training loop
+for i in range(10000):  # Number of training iterations
+    result = trainer.train()
+    print(f"Iteration {i}: {result['episode_reward_mean']}")
+    
+    # Save checkpoint periodically
+    if i % 1000 == 0:
+        checkpoint = trainer.save()
+        print(f"Checkpoint saved at {checkpoint}")
 
 # Shutdown Ray
 ray.shutdown()
